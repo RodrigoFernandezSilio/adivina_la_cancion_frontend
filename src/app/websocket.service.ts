@@ -4,6 +4,7 @@ import { RondaDTO } from './ronda';
 import { UsuarioSanitizado } from './usuario';
 import { RespuestaDTO } from './respuesta';
 import { Cancion } from './cancion';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class WebsocketService {
 
   connect(partidaID: number, usuarioID: number): void {
     // Cambia esta URL a la URL de tu servidor de WebSocket
-    const url = `ws://localhost:8080/webSocketPartida/${partidaID}/${usuarioID}`;
+    const url = `${environment.wsUrl}/webSocketPartida/${partidaID}/${usuarioID}`;
 
     // Crea una nueva conexión WebSocket
     this.socket = new WebSocket(url);

@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { ErrorBoxService } from './error-box.service';
 import { Usuario } from './usuario';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  usuariosURL = "http://localhost:8080/usuarios"
+  usuariosURL = `${environment.apiUrl}/usuarios`;  
 
   usuario: Usuario | null = null;
 

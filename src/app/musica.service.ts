@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Playlist } from './playlist';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MusicaService {
 
-  musicaURL = "http://localhost:8080/musica"
+  musicaURL = `${environment.apiUrl}/musica`;
 
   constructor(private http: HttpClient) { }
 

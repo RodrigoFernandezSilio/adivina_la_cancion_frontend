@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { ErrorBoxService } from './error-box.service';
 import { Partida, PartidaDTO, PartidaPreview } from './partida';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class PartidaService {
 
   partida: PartidaPreview | null = null;
 
-  partidasURL = "http://localhost:8080/partidas"
+  partidasURL = `${environment.apiUrl}/partidas`;
 
   constructor(private http: HttpClient, private errorBoxService: ErrorBoxService) { }
 
