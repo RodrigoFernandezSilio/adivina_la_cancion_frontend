@@ -1,0 +1,47 @@
+.usuarios-resultados {
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 60rem;
+}
+
+.usuarios-resultados-scroll {
+    max-height: 25rem;
+    overflow-y: auto;
+}
+
+.usuarios-resultados h4 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-violet-flash);
+    padding-bottom: 0.25rem;
+}
+
+.usuarios-lista {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    margin: 0;
+    padding: 0;
+}
+
+.usuario-resultado {
+    padding: 0.25rem 0.5rem;
+    border-bottom: 1px solid var(--color-violet-flash);
+    user-select: none;
+
+    /* Evita que el texto se divida en varias líneas */
+    white-space: nowrap;
+    /* Oculta el texto que sobrepasa el espacio disponible */
+    overflow: hidden;
+    /* Agrega "..." al final si el texto es muy largo */
+    text-overflow: ellipsis;
+}
+
+.espaciado {
+    white-space: pre;
+    font-family: monospace;
+}

@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <!-- Columna izquierda -->
+    <div class="m-2 column">
+        <div>
+            <h2>Adivina la canción</h2>
+            <p>
+                Adivina La Canción te reta a poner a prueba tu oído musical. ¿Puedes reconocer cada canción con solo
+                escuchar unos segundos? ¡Compite con tus amigos y demuestra quién es el verdadero experto en música!
+            </p>
+        </div>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="m-2 column">
+        <form [formGroup]="formularioUsuario" class="d-flex flex-column gap-2" (ngSubmit)="onSubmit()">
+            <div class="mb-2">
+                <label for="nombreUsuario" class="form-label">Nombre</label>
+                <input type="text" id="nombreUsuario" formControlName="nombreUsuario" class="form-control">
+            </div>
+            <div *ngIf="formularioEnviado && formularioUsuario.controls['nombreUsuario'].invalid"
+                id="nombreUsuarioVacio" class="text-danger">
+                <small>Este campo es obligatorio.</small>
+            </div>
+            <div></div>
+            <button type="submit" class="btn btn-primary m-0">Continuar</button>
+        </form>
+    </div>
+</div>

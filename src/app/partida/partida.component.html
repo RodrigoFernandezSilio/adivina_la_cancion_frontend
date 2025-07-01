@@ -1,0 +1,24 @@
+<div class="partida-container">
+  <div *ngIf="partida">
+    <div class="partida-header">
+      <div>
+        <h3>Partida #{{ partida.id }}</h3>
+        <p><strong>Lista de reproducción:</strong> {{ partida.listaReproduccionNombre }}</p>
+      </div>
+      <div *ngIf="estadoPartida === EstadoPartida.FINALIZADA">
+        <button class="btn btn-secondary m-0" (click)="volverAlMenu()">Volver al menú</button>
+      </div>
+    </div>
+
+    <app-partida-no-iniciada *ngIf="estadoPartida === EstadoPartida.NO_INICIADA" [partida]="partida">
+    </app-partida-no-iniciada>
+
+    <app-partida-iniciada *ngIf="estadoPartida === EstadoPartida.INICIADA" [partida]="partida" [rondasDTO]="rondasDTO"
+      [rondaFinalizada]="rondaFinalizada" [listaCancionesCorrectas]="listaCancionesCorrectas"
+      [listaRespuestasDTO]="listaRespuestasDTO"></app-partida-iniciada>
+
+    <app-partida-finalizada *ngIf="estadoPartida === EstadoPartida.FINALIZADA" [usuarios]="partida.usuarios"
+      [listaRespuestasDTO]="listaRespuestasDTO">
+    </app-partida-finalizada>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+.container {
+    max-width: 40rem;
+}
+
+.crear-partida-container{
+    width: 100vw;  /* Ocupa el 100% del ancho de la pantalla */
+    max-width: 20cm; /* Pero no más de 20 centímetros */
+}
+
+label {
+    font-size: 1.2rem;
+}
+
+#numRondas, #numMaxUsuariosPartida  {
+    width: 4rem;
+}
+
+/* Contenedor de la lista de resultados */
+.result-list {
+    /* Ajusta la altura según necesites */
+    max-height: 20rem;
+    overflow-y: auto;
+    border-top: 1px solid #ccc;
+
+    /* Eliminar margen y padding predeterminado de <ul> */
+    margin: 0;
+    padding: 0.5rem;
+
+    /* Evita los puntos de lista predeterminados */
+    list-style: none;
+}
+
+/* Cada fila de la lista */
+.result-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.result-item:hover {
+    background: #eee;
+}
+
+.result-item.selected {
+    background: lightcyan; /* Color de selección */
+    font-weight: bold;
+}
+
+/* Imagen de la playlist */
+.playlist-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+/* Nombre de la playlist */
+.playlist-text {
+    flex: 1;
+    /* Evita que el texto se divida en varias líneas */
+    white-space: nowrap;
+    /* Oculta el texto que sobrepasa el espacio disponible */
+    overflow: hidden;
+    /* Agrega "..." al final si el texto es muy largo */
+    text-overflow: ellipsis;
+}
+
+/* Evita que el cursor cambie a modo de escritura en los campos numéricos 
+   donde la entrada manual está bloqueada con onkeydown="return false;". 
+   Esto hace que el usuario solo pueda modificar el valor con los controles incrementales. */
+input[type="number"][onkeydown="return false;"] {
+    cursor: default;
+}
+
+.custom-checkbox {
+    transform: scale(1.5); /* Aumenta el tamaño del checkbox a 1.5 veces su tamaño original */
+}

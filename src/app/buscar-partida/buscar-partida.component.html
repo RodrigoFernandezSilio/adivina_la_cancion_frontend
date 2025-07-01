@@ -1,0 +1,19 @@
+<div class="main-container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="m-0">Elige una partida para comenzar a jugar</h3>
+        <button class="btn btn-secondary m-0" (click)="volverAlMenu()">Volver al menú</button>
+    </div>
+
+    <div class="partidas-container-scroll">
+        <div class="partidas-container">
+            <div class="partida-container" *ngFor="let partida of partidas" (click)="anhadirUsuarioAux(partida)">
+                <div>ID: {{ partida.id }}</div>
+                <div class="playlist-text">Playlist: {{ partida.listaReproduccionNombre }}</div>
+                <div>Número de rondas: {{ partida.numRondas }}</div>
+                <div>Jugadores: {{ partida.usuarios.length }} / {{ partida.numMaxUsuariosPartida }}</div>
+            </div>
+        </div>
+    </div>
+
+</div>

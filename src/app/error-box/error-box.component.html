@@ -1,0 +1,9 @@
+<div *ngIf="errorBoxService.mensajeErrorLista.length > 0" class="error-box">
+    <div class="errors-header">
+        Errores:
+        <button (click)="errorBoxService.limpiarErrores()" class="clear-button">X</button>
+    </div>
+    <div *ngFor="let mensajeError of errorBoxService.mensajeErrorLista" class="error-message">
+        {{ mensajeError.timestamp | date:'HH:mm:ss' }} - {{ mensajeError.mensaje }}
+    </div>
+</div>

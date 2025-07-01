@@ -1,0 +1,96 @@
+/* Application-wide Styles */
+:root {
+  --color-violet-flash: #ca4fed;       /* Violet Flash */
+  --color-electric-mint: #30fcee;     /* Electric Mint */
+  --color-turquoise: #00c2b6;        /* Turquoise */
+  --color-deep-teal: #008b82;          /* Deep Teal */
+}
+
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif, sans-serif;
+  font-size: 300%;
+  font-weight: bold;
+  color: var(--color-violet-flash);
+  text-align: center;
+}
+
+h2, h3 {
+  color: var(--color-deep-teal);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  height: 100%;
+}
+
+body {
+  background-image: linear-gradient(to right top, #f8e8fd, #eeeeff, #e5f3ff, #e1f8ff, #e1fbff, #e1fbff, #e1fbff, #e1fbff, #e1f8ff, #e5f3ff, #eeeeff, #f8e8fd);
+}
+
+body, input[type="text"], button {
+  color: #333;
+  font-family: Cambria, Georgia, serif;
+}
+
+button {
+  background-color: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: black;
+  font-size: 1.2rem;
+  padding: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+button:disabled {
+  background-color: #eee;
+  color: #aaa;
+  cursor: auto;
+}
+
+/* everywhere else */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Formulario */
+.campo-formulario {
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos estén en columna */
+  gap: 0.5rem; /* Espaciado entre el label, input y mensajes de error */
+}
+
+/* .etiqueta-campo-formulario {
+
+} */
+
+/* input-campo-formulario {
+
+} */
+
+app-inicio {
+  width: 100%;
+}
+
+.error-campo-formulario {
+  color: red;
+  font-size: 1rem;
+}

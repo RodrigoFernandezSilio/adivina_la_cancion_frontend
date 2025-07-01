@@ -1,0 +1,51 @@
+.error-box {
+    border: 1px solid black;
+
+    padding: 0.5rem;
+
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos estén en columna */
+    gap: 0.5rem; /* Espaciado entre el label, input y mensajes de error */
+
+    /* Altura máxima estimada para mostrar sin scroll:
+       - 1 línea de encabezado + 3 líneas de mensaje
+       - Cada línea ocupa aprox. 2rem (1rem de texto + 0.5rem de padding + 0.5rem de separación)
+       - Total de 4 líneas: 4 * 2rem = 8rem
+       - Padding del contenedor: 0.5rem arriba + 0.5rem abajo = 1rem
+       - Bordes superior e inferior: 1px + 1px = 2px = 0.125rem
+       -> Altura total: 8rem + 1rem + 0.125rem ≈ 9.125rem
+    */
+    max-height: 9.125rem;
+    overflow-y: auto; /* Agrega una barra de desplazamiento si el contenido excede */
+}
+
+.errors-header {
+    width: 100%;
+
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  
+    justify-content: space-between;
+}
+
+.clear-button {
+    /* Su altura debe ser de 1.5rem */
+    background-color: transparent;
+    border: 1px solid black;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0px;
+    padding: 0px 4px 0px 4px;
+    margin: 0px;
+}
+
+.clear-button:hover {
+    background-color: black;
+}
+
+.error-message {
+    font-size: 1rem;
+    color: red;
+}

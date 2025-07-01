@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <!-- Columna izquierda -->
+    <div class="m-2 column">
+        <div>
+            <h2>Unirse a una partida privada</h2>
+            <p>
+                Introduce el identificador de la partida y la contraseña para unirte a la diversión. ¡Haz clic en "Unirme" y comienza a jugar!
+            </p>
+        </div>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="m-2 column">
+        <form [formGroup]="formularioUnirsePartidaPrivada" class="d-flex flex-column gap-2" (ngSubmit)="onSubmit()">
+            <div class="mb-2">
+                <label for="partidaId" class="form-label">ID</label>
+                <input type="number" id="partidaId" formControlName="partidaId" class="form-control" min="1">
+            </div>
+            <div *ngIf="formularioEnviado && formularioUnirsePartidaPrivada.controls['partidaId'].invalid"
+                id="partidaId" class="text-danger">
+                <small>Este campo es obligatorio.</small>
+            </div>
+            <div class="mb-2">
+                <label for="partidaCodigoAcceso" class="form-label">Contraseña</label>
+                <input type="text" id="partidaCodigoAcceso" formControlName="partidaCodigoAcceso" class="form-control">
+            </div>
+            <div *ngIf="formularioEnviado && formularioUnirsePartidaPrivada.controls['partidaCodigoAcceso'].invalid"
+                id="partidaCodigoAccesoVacio" class="text-danger">
+                <small>Este campo es obligatorio.</small>
+            </div>
+            <div></div>
+            <button type="submit" class="btn btn-primary m-0">Unirme</button>
+
+            <button class="btn btn-secondary m-0 mt-1" (click)="volverAlMenu()">Volver al menú</button>
+        </form>
+    </div>
+</div>

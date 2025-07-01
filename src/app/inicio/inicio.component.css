@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+}
+
+.column {
+    min-width: 20rem;
+    max-width: 40%;
+}

@@ -1,0 +1,31 @@
+<!-- Contenedor con 70% ronda - 30% resultados -->
+<div class="content">
+    <!-- Sección de Ronda (70%) -->
+    <div class="round" *ngIf="rondaActual">
+        <h4>Ronda {{ numRondaActual }} de {{ partida.numRondas }}</h4>
+        <audio #audioRef controls autoplay [src]="rondaActual.cancionCorrectaAudioURL">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+        <div class="botones-votacion-container">
+            <button class="boton-votacion" *ngFor="let cancion of rondaActual.canciones"
+                (click)="seleccionarCancion(cancion)" [class.no-click]="rondaFinalizada"
+                [class.seleccionada]="cancionesSeleccionadas[numRondaActual - 1] === cancion"
+                [class.incorrecta]="esCancionIncorrecta(cancion)" [class.correcta]="esCancionCorrecta(cancion)">
+                {{ cancion.nombre }}
+            </button>
+        </div>
+    </div>
+
+    <!-- Sección de Resultados (30%) -->
+    <div class="results">
+        <h4>Resultados</h4>
+        <div class="usuarios-resultados-scroll">
+            <div class="usuarios-lista">
+                <div class="usuario-resultado" *ngFor="let usuario of partida.usuarios; let i = index">
+                    <div>{{ usuario.nombre }}:</div>
+                    <div>{{ getPuntuacionesUsuario(i) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

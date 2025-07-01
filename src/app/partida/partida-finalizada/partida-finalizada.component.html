@@ -1,0 +1,17 @@
+<div class="usuarios-resultados">
+    <h4>Resultados finales</h4>
+    <div class="usuarios-resultados-scroll">
+        <div class="usuarios-lista">
+            <div class="usuario-resultado" *ngFor="let item of getUsuariosOrdenadosPorPuntuacion(); let i = index">
+                <div>
+                    <span *ngIf="i === 0">🥇</span>
+                    <span *ngIf="i === 1">🥈</span>
+                    <span *ngIf="i === 2">🥉</span>
+                    <span *ngIf="i > 2">{{ i + 1 }}.</span>
+                    {{ item.usuario.nombre }}
+                </div>
+                <div class="espaciado">{{ item.puntuacionFinal }}</div>
+            </div>
+        </div>
+    </div>
+</div>

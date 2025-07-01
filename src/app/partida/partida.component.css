@@ -1,0 +1,17 @@
+.partida-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 60rem;
+}
+
+.partida-header p {
+    /* Limitar el ancho máximo */
+    max-width: 30rem;
+    /* Evita que el texto se divida en varias líneas */
+    white-space: nowrap;
+    /* Oculta el texto que sobrepasa el espacio disponible */
+    overflow: hidden;
+    /* Agrega "..." al final si el texto es muy largo */
+    text-overflow: ellipsis;
+}

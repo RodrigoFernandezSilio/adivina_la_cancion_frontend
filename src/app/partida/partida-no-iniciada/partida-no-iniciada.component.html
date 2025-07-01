@@ -1,0 +1,13 @@
+<p><strong>Número de rondas:</strong> {{ partida.numRondas }}</p>
+<p><strong>Número de jugadores:</strong> {{ partida.usuarios.length }} / {{ partida.numMaxUsuariosPartida }}</p>
+
+<div class="usuarios-info">
+    <h4>Jugadores</h4>
+    <div class="usuarios-info-scroll">
+        <div class="usuarios-lista">
+            <div class="usuario-info" *ngFor="let usuario of partida.usuarios">
+                {{ usuario.nombre }}
+            </div>
+        </div>
+    </div>
+</div>
