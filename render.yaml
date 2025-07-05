@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: adivina-la-cancion-frontend
+    env: static
+    staticPublishPath: dist/adivina_la_cancion_frontend
+    buildCommand: npm install && npx ng build --configuration production
+    routes:
+      - type: rewrite
+        path: /*
+        destination: /index.html
