@@ -46,17 +46,22 @@ export class PartidaIniciadaComponent {
 
 
   /**
-   * Permite seleccionar una canción para la ronda actual solo si aún no se ha seleccionado ninguna.
+   * Permite seleccionar una canción para la ronda actual.
+   * Si el ya se ha votado y no se permiten modificaciones, no hace nada.
+   * Al seleccionar, se registra la canción y se envía al backend.
    * 
    * @param cancion La canción seleccionada para enviar.
    */
   seleccionarCancion(cancion: Cancion) {
+    const yaSeleccionada = this.cancionesSeleccionadas[this.numRondaActual - 1] != null;
 
-    // Comprobar si no se ha seleccionado una canción para la ronda actual
-    // if (this.cancionesSeleccionadas[this.numRondaActual - 1] == null) {
+    // Si ya hay una canción seleccionada y el voto no es modificable, no hacer nada
+    if (yaSeleccionada && !this.partida.votoModificable) {
+      return;
+    }
 
     // Registrar la cancion seleccionada
-    this.cancionesSeleccionadas[this.numRondaActual - 1] = cancion
+    this.cancionesSeleccionadas[this.numRondaActual - 1] = cancion;
 
     // Enviar la canción seleccionada al backend mediante el servicio WebSocket
     this.websocketService.enviarObjeto("Cancion", cancion);
