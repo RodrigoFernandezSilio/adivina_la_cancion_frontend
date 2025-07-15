@@ -38,6 +38,7 @@ export class CrearPartidaComponent {
       playlistID: ["", [Validators.required]],
       numRondas: [10, [Validators.required, Validators.min(1), Validators.max(this.NUM_MAX_RONDAS)]],
       numMaxUsuariosPartida: [5, [Validators.required, Validators.min(1), Validators.max(this.NUM_MAX_USUARIOS)]],
+      votoModificable: [true],
       privada: [false],
       codigoAcceso: [{ value: '', disabled: true }, [this.codigoAccesoRequiredValidator]],
       usuarioID: [this.usuarioService.usuario!.id]

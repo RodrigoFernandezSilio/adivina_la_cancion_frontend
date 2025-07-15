@@ -17,6 +17,7 @@ label {
 
 #numRondas, #numMaxUsuariosPartida  {
     width: 4rem;
+    height: 2rem;
 }
 
 /* Contenedor de la lista de resultados */

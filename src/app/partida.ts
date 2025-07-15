@@ -10,6 +10,7 @@ export interface Partida {
     usuarios: Usuario[];
     numRondas: number;
     numMaxUsuariosPartida: number;
+    votoModificable: boolean;
     rondas: Ronda[];
     playlist: Playlist;
     privada: boolean;
@@ -39,6 +40,7 @@ export interface PartidaDTO {
     playlistID: string;
     numMaxUsuariosPartida: number;
     numRondas: number;
+    votoModificable: boolean;
     privada: boolean;
     codigoAcceso?: string;
     usuarioID: number;
@@ -49,5 +51,6 @@ export interface PartidaPreview {
     listaReproduccionNombre: string;
     numRondas: number;
     numMaxUsuariosPartida: number;
+    votoModificable: boolean;
     usuarios: UsuarioSanitizado[];
 }
