@@ -12,6 +12,7 @@
                 <div class="playlist-text">Playlist: {{ partida.listaReproduccionNombre }}</div>
                 <div>Número de rondas: {{ partida.numRondas }}</div>
                 <div>Jugadores: {{ partida.usuarios.length }} / {{ partida.numMaxUsuariosPartida }}</div>
+                <div>Se puede modificar el voto: {{ partida.votoModificable ? 'SI' : 'NO' }}</div>
             </div>
         </div>
     </div>
