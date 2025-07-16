@@ -34,6 +34,10 @@ interface Playlist {
     nombre: string;
 }
 
+export enum ModoPuntuacion {
+  FIJO = 'FIJO',
+  PROGRESIVO = 'PROGRESIVO'
+}
 
 
 export interface PartidaDTO {
@@ -41,6 +45,7 @@ export interface PartidaDTO {
     numMaxUsuariosPartida: number;
     numRondas: number;
     votoModificable: boolean;
+    modoPuntuacion: ModoPuntuacion;
     privada: boolean;
     codigoAcceso?: string;
     usuarioID: number;

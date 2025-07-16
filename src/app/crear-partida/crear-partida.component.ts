@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MusicaService } from '../musica.service';
-import { NUM_MAX_RONDAS, NUM_MAX_USUARIOS } from '../partida';
+import { ModoPuntuacion, NUM_MAX_RONDAS, NUM_MAX_USUARIOS } from '../partida';
 import { PartidaService } from '../partida.service';
 import { Playlist } from '../playlist';
 import { UsuarioService } from '../usuario.service';
@@ -25,6 +25,10 @@ export class CrearPartidaComponent {
 
   dropdownOpen: boolean = false;
 
+  modosPuntuacion = Object.values(ModoPuntuacion);
+  modoPuntuacionSeleccionado: ModoPuntuacion | null = null;
+  dropdownOpenModoPuntuacion: boolean = false;
+
   // Se usa ! para decirle a TypeScript que esta propiedad se va a inicializar antes de usarse
   formularioCrearPartida!: FormGroup;
   formularioEnviado: boolean = false;
@@ -39,6 +43,7 @@ export class CrearPartidaComponent {
       numRondas: [10, [Validators.required, Validators.min(1), Validators.max(this.NUM_MAX_RONDAS)]],
       numMaxUsuariosPartida: [5, [Validators.required, Validators.min(1), Validators.max(this.NUM_MAX_USUARIOS)]],
       votoModificable: [true],
+      modoPuntuacion: [null, [Validators.required]],
       privada: [false],
       codigoAcceso: [{ value: '', disabled: true }, [this.codigoAccesoRequiredValidator]],
       usuarioID: [this.usuarioService.usuario!.id]
@@ -95,8 +100,17 @@ export class CrearPartidaComponent {
     this.dropdownOpen = false;
   }
 
+  seleccionarModoPuntuacion(modoPuntuacion: ModoPuntuacion) {
+    console.log('Seleccionado modo de puntuación...')
+    this.formularioCrearPartida.get('modoPuntuacion')?.setValue(modoPuntuacion);
+    this.modoPuntuacionSeleccionado = modoPuntuacion;
+    this.dropdownOpenModoPuntuacion = false;
+  }
+
   crearPartida() {
     if (this.formularioCrearPartida.invalid) {
+      console.warn('Formulario no válido')
+      console.log(this.formularioCrearPartida)
       return; // Si el formulario no es válido, no se ejecuta la lógica
     }
 

@@ -2,20 +2,28 @@
     max-width: 40rem;
 }
 
-.crear-partida-container{
-    width: 100vw;  /* Ocupa el 100% del ancho de la pantalla */
-    max-width: 20cm; /* Pero no más de 20 centímetros */
+.crear-partida-container {
+    width: 100vw;
+    /* Ocupa el 100% del ancho de la pantalla */
+    max-width: 20cm;
+    /* Pero no más de 20 centímetros */
 }
 
 .dropdown-menu {
-    max-width: 24.5rem;
+    width: 24.5rem;
+}
+
+.btn-tight {
+    width: 24.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
 }
 
 label {
     font-size: 1.2rem;
 }
 
-#numRondas, #numMaxUsuariosPartida  {
+#numRondas, #numMaxUsuariosPartida {
     width: 4rem;
     height: 2rem;
 }
@@ -48,7 +56,8 @@ label {
 }
 
 .result-item.selected {
-    background: lightcyan; /* Color de selección */
+    background: lightcyan;
+    /* Color de selección */
     font-weight: bold;
 }
 
@@ -79,5 +88,36 @@ input[type="number"][onkeydown="return false;"] {
 }
 
 .custom-checkbox {
-    transform: scale(1.5); /* Aumenta el tamaño del checkbox a 1.5 veces su tamaño original */
+    transform: scale(1.5);
+    /* Aumenta el tamaño del checkbox a 1.5 veces su tamaño original */
+}
+
+/* Modo de puntuación */
+.result-list-modo-puntuacion {
+    /* Ajusta la altura según necesites */
+    max-height: 20rem;
+    overflow-y: auto;
+
+    /* Eliminar margen y padding predeterminado de <ul> */
+    margin: 0;
+    padding: 0rem 0.5rem 0rem 0.5rem;
+
+    /* Evita los puntos de lista predeterminados */
+    list-style: none;
+}
+
+.result-item-modo-puntuacion {
+    padding: 0.20rem;
+    cursor: pointer;
+
+}
+
+.result-item-modo-puntuacion:hover {
+    background: #eee;
+}
+
+.result-item-modo-puntuacion.selected {
+    background: lightcyan;
+    /* Color de selección */
+    font-weight: bold;
 }

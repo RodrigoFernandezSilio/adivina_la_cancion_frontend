@@ -6,33 +6,38 @@
 
     <form [formGroup]="formularioCrearPartida" class="d-flex flex-column gap-2" (ngSubmit)="onSubmit()">
 
-        <div class="mb-2">
-            <label for="playlistID" class="form-label">Playlist</label>
-            <div class="dropdown" [class.show]="dropdownOpen">
-                <button class="btn btn-light dropdown-toggle m-0" type="button" (click)="toggleDropdown()">
-                    {{ playlistSeleccionada ? playlistSeleccionada.nombre : 'Seleccione una playlist' }}
-                </button>
+        <div>
 
-                <div class="dropdown-menu" [class.show]="dropdownOpen">
-                    <div class="d-flex align-items-center m-2 gap-2 ">
-                        <input type="text" (keydown.enter)="$event.preventDefault()" #inputBusqueda
-                            placeholder="Nombre de la playlist" class="form-control" />
-                        <button class="btn btn-outline-primary m-0" type="button"
-                            (click)="buscarPlaylistPorNombre(inputBusqueda.value)">Buscar</button>
+            <div class="mb-2 d-flex justify-content-between">
+                <label for="playlistID" class="form-label">Playlist</label>
+                <div class="dropdown" [class.show]="dropdownOpen">
+                    <button class="btn btn-light dropdown-toggle m-0 btn-tight" type="button"
+                        (click)="toggleDropdown()">
+                        {{ playlistSeleccionada ? playlistSeleccionada.nombre : 'Seleccione una playlist' }}
+                    </button>
+
+                    <div class="dropdown-menu" [class.show]="dropdownOpen">
+                        <div class="d-flex align-items-center m-2 gap-2 ">
+                            <input type="text" (keydown.enter)="$event.preventDefault()" #inputBusqueda
+                                placeholder="Nombre de la playlist" class="form-control" />
+                            <button class="btn btn-outline-primary m-0" type="button"
+                                (click)="buscarPlaylistPorNombre(inputBusqueda.value)">Buscar</button>
+                        </div>
+
+                        <ul *ngIf="playlists.length > 0" class="result-list">
+                            <li *ngFor="let playlist of playlists" class="result-item"
+                                (click)="seleccionarPlaylist(playlist)"
+                                [class.selected]="playlist.id === playlistSeleccionada?.id">
+
+                                <img *ngIf="playlist.imagenUrl" [src]="playlist.imagenUrl" alt="Imagen de la playlist"
+                                    class="playlist-img">
+                                <span class="playlist-text">{{ playlist.nombre }}</span>
+                            </li>
+                        </ul>
+                        <div *ngIf="playlists.length == 0" id="empty" class="dropdown-header">No hay resultados, prueba
+                            con
+                            otro nombre</div>
                     </div>
-
-                    <ul *ngIf="playlists.length > 0" class="result-list">
-                        <li *ngFor="let playlist of playlists" class="result-item"
-                            (click)="seleccionarPlaylist(playlist)"
-                            [class.selected]="playlist.id === playlistSeleccionada?.id">
-
-                            <img *ngIf="playlist.imagenUrl" [src]="playlist.imagenUrl" alt="Imagen de la playlist"
-                                class="playlist-img">
-                            <span class="playlist-text">{{ playlist.nombre }}</span>
-                        </li>
-                    </ul>
-                    <div *ngIf="playlists.length == 0" id="empty" class="dropdown-header">No hay resultados, prueba con
-                        otro nombre</div>
                 </div>
             </div>
             <div *ngIf="formularioEnviado && formularioCrearPartida.controls['playlistID'].invalid"
@@ -60,6 +65,36 @@
             <label for="votoModificable" class="form-label m-0 me-3">¿Se puede modificar el voto?</label>
             <input type="checkbox" id="votoModificable" formControlName="votoModificable"
                 class="form-check-input m-0 custom-checkbox" />
+        </div>
+
+        <!-- Modo de puntuación -->
+        <div>
+
+            <div class="mb-2 d-flex justify-content-between">
+                <label for="modoPuntuacion" class="form-label m-0">Modo de puntuación</label>
+
+                <div class="dropdown" [class.show]="dropdownOpenModoPuntuacion" style="float: right;">
+                    <button class="btn btn-light dropdown-toggle m-0 btn-tight" type="button"
+                        (click)="dropdownOpenModoPuntuacion = !dropdownOpenModoPuntuacion">
+                        {{ formularioCrearPartida.get('modoPuntuacion')?.value || 'Seleccione un modo de puntuación' }}
+                    </button>
+
+                    <div class="dropdown-menu dropend" [class.show]="dropdownOpenModoPuntuacion">
+                        <ul class="result-list-modo-puntuacion">
+                            <li *ngFor="let modoPuntuacion of modosPuntuacion" class="result-item-modo-puntuacion"
+                                (click)="seleccionarModoPuntuacion(modoPuntuacion)"
+                                [class.selected]="modoPuntuacion === modoPuntuacionSeleccionado">
+
+                                <span>{{ modoPuntuacion }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="formularioEnviado && formularioCrearPartida.controls['modoPuntuacion'].invalid"
+                id="modoPuntuacionNoValido" class="text-danger">
+                <small>Este campo es obligatorio.</small>
+            </div>
         </div>
 
         <!-- Privacidad -->
