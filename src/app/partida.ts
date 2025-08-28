@@ -57,5 +57,6 @@ export interface PartidaPreview {
     numRondas: number;
     numMaxUsuariosPartida: number;
     votoModificable: boolean;
+    modoPuntuacion: ModoPuntuacion;
     usuarios: UsuarioSanitizado[];
 }
